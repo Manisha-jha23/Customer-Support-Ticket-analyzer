@@ -1,0 +1,177 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Support Ticket Analyzer</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            width: 500px;
+            margin: auto;
+            border-radius: 8px;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Customer Support Ticket Analyzer</h2>
+
+    <form method="POST">
+        <textarea name="ticket" placeholder="Enter customer issue here..." required></textarea>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if category %}
+    <div class="result">
+        Category: {{ category }} <br>
+        Priority: {{ priority }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Customer Support Ticket Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 550px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 130px;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #667eea;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #5a67d8;
+            transform: scale(1.03);
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f4f6ff;
+            border-left: 5px solid #667eea;
+            border-radius: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            color: white;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .high { background: #e53e3e; }
+        .medium { background: #dd6b20; }
+        .low { background: #38a169; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🤖 AI Ticket Analyzer</h2>
+
+    <form method="POST">
+        <textarea name="ticket" placeholder="Describe the customer issue here..." required></textarea>
+        <button type="submit">Analyze Ticket</button>
+    </form>
+
+    {% if category %}
+    <div class="result-box">
+        <p><strong>Predicted Category:</strong> {{ category }}</p>
+
+        <p><strong>Priority:</strong>
+            <span class="badge 
+                {% if priority == 'High' %}high
+                {% elif priority == 'Medium' %}medium
+                {% else %}low
+                {% endif %}">
+                {{ priority }}
+            </span>
+        </p>
+
+        <p><strong>Suggested Resolution:</strong><br>
+            {{ resolution }}
+        </p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
